@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>TypeMonkey - see monkey, type monkey</h1>
+  
+    <h2 id="statheader">Stats for your PB of </h2>
+    <div>
+        <canvas id="myChart"></canvas>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+    async function getchart(){
+
+        const request = await fetch("/api/score")
+        const response = await request.json()
+        const s = await response.score.map((x) => x * 1000);
+        const b = await response.best.toFixed(2);
+        statheader.textContent = `Stats for your PB of ${b}`;
+
+        const ctx = await document.getElementById('myChart');
+        console.log(s)
+
+      
+        new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: ['m', 'o', 'n', 'k', 'e', 'y'],
+            datasets: [{
+              label: 'Time to Press',
+              data: s,
+              borderWidth: 1
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+    }
+    getchart()
+    </script>      
+{% endblock %}

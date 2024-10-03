@@ -1,0 +1,31 @@
+stable_id: homecookeds_revenge
+name: homecooked's revenge
+description: |
+  It came to my attention that some of you took the lazy way out. Well rest assured this version
+  of homecooked is not going to be as easy as the last one.
+
+  [homecookeds_revenge.challs.pwnoh.io](https://homecookeds_revenge.challs.pwnoh.io)
+flag: bctf{y0ur_b4s1c_s0lv35_h4v3_n0_pl4c3_h3r3}
+category: web
+author: v0rtex
+difficulty: hard
+points: dynamic
+healthscript: https://homecookeds_revenge.challs.pwnoh.io
+ticket_template: |
+  ## Please describe the issue you are experiencing
+
+  ## Steps to reproduce
+
+files:
+  - src: export.zip
+    dst: homecookeds_revenge.zip
+
+privileged: true
+image: homecookeds_revenge
+env:
+  FLAG: bctf{y0ur_b4s1c_s0lv35_h4v3_n0_pl4c3_h3r3}
+ports:
+  - type: http
+    container_port: 8001
+    instance_port: 40025
+    http_subdomain: homecookeds_revenge

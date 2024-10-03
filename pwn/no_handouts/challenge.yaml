@@ -1,0 +1,28 @@
+stable_id: no_handouts
+name: no_handouts
+description: |
+  I just found a way to kill ROP. I think. Maybe?
+
+  `nc challs.pwnoh.io 13371`
+flag: bctf{sh3lls_ar3_bl0at_ju5t_use_sh3llcode!}
+category: pwn
+author: corgo
+difficulty: medium
+points: dynamic
+healthscript: tcp://challs.pwnoh.io:13371 <"system">
+ticket_template: |
+  ## Please describe the issue you are experiencing
+
+  ## Steps to reproduce
+
+files:
+  - src: export.zip
+    dst: no_handouts.zip
+
+privileged: true
+image: no_handouts
+ports:
+  - type: tcp
+    container_port: 1024
+    instance_port: 40001
+    lb_port: 13371

@@ -1,0 +1,27 @@
+stable_id: fu
+name: fu
+description: |
+  "There is just news. There is no good or bad. Except for the news that you can sign up for classes today at [fu.challs.pwnoh.io](https://fu.challs.pwnoh.io) and become the dragon warrior for a few dollars a month, that is GREAT news!" - Master Oogway
+  
+  <strong style="color: #22c55e">beginner</strong>
+flag: bctf{1n5p3c7_3l3m3n7_w0rk4r0und_f0und_88b73569618bcb6a}
+category: web
+author: mbund
+difficulty: beginner
+points: 50
+healthscript: https://fu.challs.pwnoh.io
+ticket_template: |
+  ## This is a beginner challenge, so don't be afraid to ask for help!
+
+  ## What I've tried
+
+  ## What I need help with
+
+files: []
+
+image: fu
+ports:
+  - type: http
+    container_port: 80
+    instance_port: 40013
+    http_subdomain: fu

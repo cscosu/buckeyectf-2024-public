@@ -1,0 +1,29 @@
+stable_id: gentleman
+name: gentleman
+description: |
+  Time to do the impossible.
+
+  Hint: check Corgo's messages in the #misc channel on Discord.
+
+  [gentleman.challs.pwnoh.io](https://gentleman.challs.pwnoh.io)
+flag: bctf{now_that_is_a_powerful_class_4e507}
+category: misc
+author: corgo
+difficulty: hard
+points: dynamic
+healthscript: https://gentleman.challs.pwnoh.io
+ticket_template: |
+  ## Please describe the issue you are experiencing
+
+  ## Steps to reproduce
+
+files:
+  - src: export.zip
+    dst: gentleman.zip
+
+image: gentleman
+ports:
+  - type: http
+    container_port: 5000
+    instance_port: 40012
+    http_subdomain: gentleman

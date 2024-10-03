@@ -1,0 +1,31 @@
+stable_id: dojo
+name: dojo
+description: |
+  The dojo stores many riches. Can you make it through the gauntlet?
+
+  [dojo.challs.pwnoh.io](https://dojo.challs.pwnoh.io)
+flag: &flag bctf{D3FAul7_rA73_l1m17_fUnc710N5_aR3_5caRy}
+category: web
+author: mbund
+difficulty: hard
+points: dynamic
+healthscript: https://dojo.challs.pwnoh.io
+ticket_template: |
+  ## Please describe the issue you are experiencing
+
+  ## Steps to reproduce
+
+files:
+  - src: export.zip
+    dst: dojo.zip
+
+image: dojo
+rate_limit: 20
+env:
+  JWT_SECRET: 89c574f653e5a92c3ca6ff0a7241b2005930bdd5064262ab9c00a65b3d555c87
+  FLAG: *flag
+ports:
+  - type: http
+    container_port: 8080
+    instance_port: 40004
+    http_subdomain: dojo

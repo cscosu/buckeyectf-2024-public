@@ -1,0 +1,14 @@
+stable_id: wreck
+name: wreck
+description: |
+  I hate when my ship crashes
+flag: bctf{D4MN_7h47_c0r3_dvmp_907_4_GY477}
+category: forensics
+author: gsemaj
+points: dynamic
+ticket_template: |
+  ## Please describe the issue (download broken, wrong flag, etc.)
+
+files:
+  - src: dump
+    dst: dump

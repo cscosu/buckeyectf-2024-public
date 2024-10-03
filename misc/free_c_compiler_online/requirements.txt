@@ -1,0 +1,4 @@
+flask==3.0.2
+podman==4.9.0
+gunicorn==21.2.0
+

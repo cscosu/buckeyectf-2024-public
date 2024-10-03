@@ -1,0 +1,12 @@
+stable_id: survey
+name: survey
+description: |
+  Tell us what you thought of the event and [fill out the survey](https://forms.gle/YesHXd7D32FY69wU9). We would love it if all team members gave their feedback!
+flag: bctf{502_b4d_6473w4y}
+category: misc
+author: mbund
+points: 10
+difficulty: beginner
+files: []
+ticket_template: |
+  ## Please describe the issue

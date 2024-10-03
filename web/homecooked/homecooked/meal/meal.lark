@@ -1,0 +1,85 @@
+body: (statement | eval | html | meal_literal)*
+statement.2: simple_statement | compound_statement
+compound_statement: "🍴" (for_stmt | if_stmt | while_stmt) "🍴"
+simple_statement: "🍴" (assign_stmt | expression) "🍴"
+eval.1: "🥢" expression "🥢"
+html.0: /[^🍴🥢🧆🥄]+/ body
+                
+for_stmt: "🍔" testlist "🍟" expression "🥄"  body "🥄"
+if_stmt: "🍕" test "🥄" body "🥄" ("🥙" expression "🥄" body "🥄")* ("🥪" "🥄" body "🥄")?
+while_stmt: "🌯" test "🥄" body "🥄"
+assign_stmt: name "🍇" expression 
+
+meal_literal.0: "🧆" /[^🧆]+/ "🧆"
+                
+expression: or_test
+?test: or_test ("🍕" or_test "🥪" test)?  
+?or_test: and_test ("🍹" and_test)*
+?and_test: not_test ("🍸" not_test)*
+?not_test: "🍷" not_test | comparison
+?comparison: arith_expr (COMP_OP arith_expr)*
+COMP_OP: "🍰" | "🧁" | "🥧" | "🍫" | "🍬" | "🍭"
+?arith_expr: term (ARITH_OP term)*
+?term: factor (FACTOR_OP factor)*
+?factor: UNARY_OP factor | power
+?power: atom_expr ("🍚" factor)?
+                
+?atom_expr: atom_expr "🦀" [arguments] "🦞" -> funccall
+        | atom_expr "🍎" subscript_list "🍏" -> getitem
+        | atom_expr "🥚" name -> getattr
+        | atom
+                
+?atom: "🍎" _exprlist? "🍏" -> list
+    | "🦀" test "🦞"
+    | name -> var
+    | number 
+    | string
+    | true 
+    | false 
+    | none
+                
+arguments: argvalue ("🌭" argvalue)*
+?argvalue: test kwargvalue?
+kwargvalue: ("🍇" test)
+                
+?subscript_list: subscript
+    | subscript (("🌭" subscript)+ ["🌭"] | "🌭")
+?subscript: test | ([test] "🍆" [test] [sliceop])
+sliceop: "🍆" [test]
+                
+_exprlist: expression
+    | expression (("🌭" expression)+ ["🌭"]|"🌭")
+                
+?testlist: test | testlist_tuple
+testlist_tuple: test (("🌭" test)+ ["🌭"] | "🌭")
+
+%import common.WS
+%ignore WS
+
+number: DEC_NUMBER | HEX_NUMBER | BIN_NUMBER | OCT_NUMBER | FLOAT_NUMBER | IMAG_NUMBER
+
+ARITH_OP: "🍦" | "🍧"   
+FACTOR_OP: "🍨" | "🍩" | "🍪" | "🎂"
+UNARY_OP: "🥟" | "🥠" | "🥡"
+            
+name: /[^\W\d]\w*/
+COMMENT: /#[^\n]*/
+            
+true: "🌮"
+false: "🥬"
+none: "🥕"
+
+
+string: /([ubf]?r?|r[ubf])("(?!"").*?(?<!\\)(\\\\)*?"|'(?!'').*?(?<!\\)(\\\\)*?')/i
+
+_SPECIAL_DEC: "0".."9"        ("_"?  "0".."9"                       )*
+DEC_NUMBER:   "1".."9"        ("_"?  "0".."9"                       )*
+        |   "0"             ("_"?  "0"                            )* /(?![1-9])/
+HEX_NUMBER.2: "0" ("x" | "X") ("_"? ("0".."9" | "a".."f" | "A".."F"))+
+OCT_NUMBER.2: "0" ("o" | "O") ("_"?  "0".."7"                       )+
+BIN_NUMBER.2: "0" ("b" | "B") ("_"?  "0".."1"                       )+
+
+_EXP: ("e"|"E") ["+" | "-"] _SPECIAL_DEC
+DECIMAL: "." _SPECIAL_DEC | _SPECIAL_DEC "." _SPECIAL_DEC?
+FLOAT_NUMBER.2: _SPECIAL_DEC _EXP | DECIMAL _EXP?
+IMAG_NUMBER.2: (_SPECIAL_DEC      | FLOAT_NUMBER) ("J" | "j")

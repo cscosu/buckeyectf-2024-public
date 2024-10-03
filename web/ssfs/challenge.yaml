@@ -1,0 +1,28 @@
+stable_id: ssfs
+name: SSFS
+description: |
+  I made a file server to easily share my files with my friends. Nobody has hacked it yet, so I'm sure it's secure.
+
+  [ssfs.challs.pwnoh.io](https://ssfs.challs.pwnoh.io)
+  <br><strong style="color: #22c55e">beginner</strong>
+flag: bctf{4lw4y5_35c4p3_ur_p4th5}
+category: web
+author: v0rtex
+difficulty: beginner
+points: 50
+healthscript: https://ssfs.challs.pwnoh.io
+ticket_template: |
+  ## Please describe the issue you are experiencing
+
+  ## Steps to reproduce
+
+files:
+  - src: export.zip
+    dst: SSFS.zip
+
+image: ssfs
+ports:
+  - type: http
+    container_port: 5000
+    instance_port: 40006
+    http_subdomain: ssfs

@@ -1,0 +1,29 @@
+stable_id: free_c_compiler_online
+name: Free C Compiler (Online)
+description: |
+  It is free of charge, but is it free of bugs?
+
+  [free-c-compiler-online.challs.pwnoh.io](https://free-c-compiler-online.challs.pwnoh.io)
+flag: bctf{fr33d0m_1s_bu7_4n_3mp7y_1llu510n_b842fff60fc03a4f}
+category: misc
+author: jm8
+difficulty: medium
+points: dynamic
+healthscript: https://free-c-compiler-online.challs.pwnoh.io
+ticket_template: |
+  ## Please describe the issue you are experiencing
+
+  ## Steps to reproduce
+
+files:
+  - src: export.zip
+    dst: free_c_compiler_online.zip
+
+image: free_c_compiler_online
+rate_limit: 20
+ports:
+  - type: http
+    container_port: 5000
+    instance_port: 40016
+    http_subdomain: free-c-compiler-online
+privileged: true

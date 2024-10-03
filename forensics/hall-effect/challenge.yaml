@@ -1,0 +1,14 @@
+stable_id: hall-effect
+name: hall-effect
+flag: bctf{Wh0s3_g0NNa_CarRY_Th3B0atS}
+category: forensics
+author: rene
+points: dynamic
+difficulty: medium
+files:
+  - src: capture.pcapng
+    dst: capture.pcapng
+ticket_template: |
+  ## Please describe the issue
+description: |
+  Hint: finding the device firmware may be helpful

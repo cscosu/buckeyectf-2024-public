@@ -1,0 +1,17 @@
+stable_id: fixpoint
+name: fixpoint
+description: |
+  base64(base64(base64(base64(...))))
+flag: bctf{DEPCmQqklUgj5yNBA93IHMYaVFiXedxroKsh4GuSvJW72OzwLR6Z8p01nT}
+category: misc
+author: jm8
+difficulty: easy
+points: dynamic
+ticket_template: |
+  ## Please describe the issue which you are having
+
+files:
+  - src: fixpoint.py
+    dst: fixpoint.py
+  - src: readme.md
+    dst: readme.md

@@ -1,0 +1,29 @@
+stable_id: sailing_the_c
+name: sailing_the_c
+description: |
+  The king of flags has sent you on a journey across the world with nothing but a pie. Will you prevail?
+
+  `nc challs.pwnoh.io 13375`
+
+flag: bctf{4te_3verY_B1t_0f_THe_PIE}
+category: pwn
+author: corgo
+points: dynamic
+difficulty: medium
+
+ticket_template: |
+  ## Please describe the issue (connection issues, wrong flag, etc.)
+
+healthscript: tcp://challs.pwnoh.io:13375 <"Where">
+files:
+  - src: export.zip
+    dst: sailing_the_c.zip
+
+privileged: true
+image: sailing_the_c
+
+ports:
+  - type: tcp
+    container_port: 1024
+    instance_port: 40030
+    lb_port: 13375

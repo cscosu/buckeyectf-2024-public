@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Free C Compiler (Online)</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/codemirror.min.css"
+    />
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        display: flex;
+        flex-direction: column;
+      }
+
+      h1 {
+        margin-left: 0.5em;
+        margin-top: 1em;
+        padding: 0;
+      }
+
+      #runbutton {
+        margin: 1em;
+      }
+
+      .CodeMirror {
+        flex: 1;
+        margin-left: 1em;
+      }
+
+      .result {
+        display: grid;
+        flex: 1;
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h1>Free C Compiler (Online)</h1>
+    </div>
+    <div>
+      <button id="runbutton" onclick="run()">Run</button>
+    </div>
+
+    <textarea id="code" name="code">
+// Write your C code here
+#include <stdio.h>
+
+int main() {
+  printf("Hello, World!");
+  return 0;
+}
+    </textarea>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/mode/clike/clike.min.js"></script>
+    <script>
+      var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+        mode: "text/x-csrc", // C mode
+        lineNumbers: true,
+        theme: "default",
+        autoCloseBrackets: true,
+        matchBrackets: true,
+      });
+
+      const savedCode = localStorage.getItem("code");
+      if (savedCode) {
+        editor.setValue(savedCode);
+      }
+
+      async function run() {
+        const code = editor.getValue();
+        localStorage.setItem("code", code);
+        const resp = await fetch("/run", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ code }),
+        });
+        const { id } = await resp.json();
+        setTimeout(() => (location = `/${id}`), 100);
+      }
+    </script>
+  </body>
+</html>

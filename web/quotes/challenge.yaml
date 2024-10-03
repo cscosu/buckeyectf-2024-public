@@ -1,0 +1,29 @@
+stable_id: quotes
+name: quotes
+description: |
+  I'm launching 🚀 my new ✨ SaaS providing quotes 📝 as an API 💪!
+
+  [quotes.challs.pwnoh.io/quote](https://quotes.challs.pwnoh.io/quote)
+flag: bctf{numb3r5_4nd_57r1n65_4r3_4mb16u0u5_1n_j5_831b8aa8cbe58ed4}
+category: web
+author: mbund
+difficulty: easy
+points: dynamic
+healthscript: https://quotes.challs.pwnoh.io/quote [401]
+ticket_template: |
+  ## Please describe the issue you are experiencing
+
+  ## Steps to reproduce
+
+files:
+  - src: export.zip
+    dst: quotes.zip
+
+image: quotes
+env:
+  SECRET_KEY: 5f154f355b9f70d73d0810686fdc7d1f22f1bfee06c78b115cb579d45733282a
+ports:
+  - type: http
+    container_port: 3000
+    instance_port: 40011
+    http_subdomain: quotes

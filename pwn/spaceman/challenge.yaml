@@ -1,0 +1,25 @@
+stable_id: spaceman
+name: spaceman
+description: |
+  Hack the planet or something
+
+  `nc challs.pwnoh.io 13372`
+flag: bctf{1_h4v3_S3V3R4L_N454_3NG1N33R5_b4ck1n9_m3_up}
+category: pwn
+author: gsemaj
+difficulty: medium
+points: dynamic
+ticket_template: |
+  ## Please describe the issue (connection issues, wrong flag, etc.)
+healthscript: tcp://challs.pwnoh.io:13372 <"#####">
+files:
+  - src: export.zip
+    dst: spaceman.zip
+
+privileged: true
+image: spaceman
+ports:
+  - type: tcp
+    container_port: 5000
+    instance_port: 40002
+    lb_port: 13372

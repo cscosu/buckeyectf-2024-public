@@ -1,0 +1,21 @@
+stable_id: rsa
+name: rsa
+description: |
+  [https://en.wikipedia.org/wiki/RSA_(cryptosystem)](https://en.wikipedia.org/wiki/RSA_(cryptosystem))
+  
+  <strong style="color: #22c55e">beginner</strong>
+flag: bctf{f4c70r1z3_b3773r_4d3b35e4}
+category: crypto
+author: mbund
+difficulty: beginner
+points: 50
+ticket_template: |
+  ## This is a beginner challenge, so don't be afraid to ask for help!
+
+  ## What I've tried
+
+  ## What I need help with
+
+files:
+  - src: rsa.dist.py
+    dst: rsa.py

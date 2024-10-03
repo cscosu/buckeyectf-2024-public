@@ -1,0 +1,86 @@
+bits 64 ; credits to https://welovecpteam.wordpress.com/2020/05/01/plaidctf-2020-golf-so-pwni-ng/
+            org 0x000000000000
+
+ehdr:                                           
+            db  0x7F, "ELF", 2, 1, 1, 0
+    times 8 db  0
+            dw  3
+            dw  62
+            dd  1
+            dq  _start
+            dq  phdr - $$
+            dq  0
+            dd  0
+            dw  ehdrsize
+            dw  phdrsize
+            dw  2
+            dw  0
+            dw  0
+            dw  0
+
+ehdrsize    equ $ - ehdr
+
+phdr:
+            dd  1
+            dd  7
+            dq  0
+            dq  $$
+            dq  $$
+            dq  filesize
+            dq  filesize
+            dq  0x1000
+dhdr:
+            dd  2
+            dd  6
+            dq  dynseg
+            dq  dynseg
+            dq  dynseg
+            dq  104
+            dq  104
+            dq  0x8
+
+phdrsize    equ     $ - dhdr
+
+dynseg:
+    dq 0x19 
+    dq _ptr
+    dq 0x1B
+    dq 0x8
+    dq 0x7
+    dq _rela
+    dq 0x8
+    dq 24
+    dq 0x9
+    dq 24
+    dq 0x6 
+    dq 0x0
+    dq 0x5
+    dq 0x0
+    dq 0x0
+
+_ptr:
+    dq 0x0
+
+_strtab:
+
+_rela:
+    dq _ptr
+    dq 0x8
+    dq _start
+
+_start:
+	xor rdi, rdi
+    xor rsi, rsi
+    xor rdx, rdx
+    xor rax, rax
+    mov rax, 56 
+	syscall ; fork()
+	cmp rax, 0
+	jz _shellcode ; execute shellcode if child process
+	ret
+
+_shellcode:
+	xor rdi, rdi
+    xor rsi, rsi
+    xor rdx, rdx
+    xor rax, rax ; place whatever ya want

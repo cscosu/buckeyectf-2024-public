@@ -1,0 +1,28 @@
+stable_id: color
+name: color
+description: |
+  What's your favorite color?
+
+  `nc challs.pwnoh.io 13370`
+  <br><strong style="color: #22c55e">beginner</strong>
+flag: &flag bctf{1_d0n7_c4r3_571ll_4_m1d_c010r}
+category: beginner-pwn
+author: gsemaj
+difficulty: beginner
+points: 70
+ticket_template: |
+  ## Please describe the issue (connection issues, wrong flag, etc.)
+healthscript: tcp://challs.pwnoh.io:13370 <"What">
+files:
+  - src: export.zip
+    dst: color.zip
+
+privileged: true
+image: color
+env:
+  JAIL_ENV_FLAG: *flag
+ports:
+  - type: tcp
+    container_port: 5000
+    instance_port: 40000
+    lb_port: 13370

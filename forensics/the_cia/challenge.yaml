@@ -1,0 +1,16 @@
+stable_id: the_CIA
+name: the_CIA
+description: |
+  I was handed this top-secret CIA document, but I've been told the password on it isn't crackable. The document seems pretty old, maybe there's a different way to open it..?
+
+  Author note: Competitors with very slow computers may have some struggle with this challenge. To help speed things up: the first byte is b8 (you'll know what this means later)
+flag: bctf{U_c4N_d0_TH1s_On_w0rd_docs_T0O}
+category: forensics
+author: corgo
+points: dynamic
+difficulty: medium
+files:
+  - src: protected-cia-document.pdf
+    dst: protected-cia-document.pdf
+ticket_template: |
+  ## Please describe the issue (connection issues, wrong flag, etc.)

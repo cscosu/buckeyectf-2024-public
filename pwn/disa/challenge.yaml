@@ -1,0 +1,28 @@
+stable_id: disa
+name: D.I.S.A.
+description: |
+  disa is the panicle of high performance and innovative design.
+  13bit is the future, everything else is pure cope.
+  Embrace the performance and safety of disa
+
+  Co-authored by: auska
+
+  `nc challs.pwnoh.io 13430`
+flag: bctf{w417_4c7u411y_13_b17_c0mpu73r5_fuck1n9_5uck}
+category: pwn
+author: gsemaj
+points: dynamic
+ticket_template: |
+  ## Please describe the issue (connection issues, wrong flag, etc.)
+healthscript: tcp://challs.pwnoh.io:13430 <"D.I.S.A.">
+files:
+  - src: export.zip
+    dst: disa.zip
+
+privileged: true
+image: disa
+ports:
+  - type: tcp
+    container_port: 5000
+    instance_port: 40031
+    lb_port: 13430

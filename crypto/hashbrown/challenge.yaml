@@ -1,0 +1,24 @@
+stable_id: hashbrown
+name: hashbrown
+description: |
+  I made <del>fresh hashbrowns</del> fresh hash function.
+
+  `nc challs.pwnoh.io 13419`
+flag: bctf{e7ym0l0gy_f4c7_7h3_w0rd_hash_c0m35_fr0m_7h3_fr3nch_hacher_wh1ch_m34n5_t0_h4ck_0r_ch0p}
+category: crypto
+author: jm8
+difficulty: easy
+points: dynamic
+ticket_template: |
+  ## Please describe the issue (connection issues, wrong flag, etc.)
+healthscript: tcp://challs.pwnoh.io:13419 <"Recipe for hashbrowns:">
+files:
+  - src: dist.py
+    dst: hashbrown.py
+
+image: hashbrown
+ports:
+  - type: tcp
+    container_port: 1024
+    instance_port: 40010
+    lb_port: 13419

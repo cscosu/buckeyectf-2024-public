@@ -1,0 +1,8 @@
+[package]
+name = "datalog1"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+datafrog = { git = "https://github.com/rust-lang/datafrog.git", rev = "07bf407c740db506a56bcb4af3eb474eb83ca815" }
+

@@ -1,0 +1,26 @@
+stable_id: runway2
+name: runway2
+description: |
+  Now with a twist!
+
+  `nc challs.pwnoh.io 13402`
+  <br><strong style="color: #22c55e">beginner</strong>
+flag: bctf{I_m1sS_4r1thm3t1c_qu1ZZ3s_2349adb53baa2955}
+category: beginner-pwn
+author: kanderoo
+difficulty: beginner
+points: 70
+ticket_template: |
+  ## Please describe the issue (connection issues, wrong flag, etc.)
+healthscript: tcp://challs.pwnoh.io:13402 <"Pop">
+files:
+  - src: export.zip
+    dst: runway2.zip
+
+privileged: true
+image: runway2
+ports:
+  - type: tcp
+    container_port: 5000
+    instance_port: 40022
+    lb_port: 13402

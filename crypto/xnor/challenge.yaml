@@ -1,0 +1,23 @@
+stable_id: xnor
+name: xnor
+description: |
+  XNOR! It's like XOR, but it's actually the complete opposite.
+
+  <strong style="color: #22c55e">beginner</strong>
+flag: bctf{why_xn0r_y0u_b31ng_so_3xclu51v3}
+category: crypto
+author: jm8
+difficulty: beginner
+points: 50
+ticket_template: |
+  ## This is a beginner challenge, so don't be afraid to ask for help!
+
+  ## What I've tried
+
+  ## What I need help with
+
+files:
+  - src: xnor.dist.py
+    dst: xnor.py
+  - src: output.txt
+    dst: xnor_output.txt

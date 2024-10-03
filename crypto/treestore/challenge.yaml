@@ -1,0 +1,23 @@
+stable_id: treestore
+name: treestore
+description: |
+  I learned about IPFS the other day and tried rolling my own implementation!
+
+  `nc challs.pwnoh.io 13420`
+flag: bctf{xX_dudZddud0d3uudu_cHunky}
+category: crypto
+author: can.of.porridge
+difficulty: hard
+points: dynamic
+ticket_template: |
+  ## Please describe the issue (connection issues, wrong flag, etc.)
+files:
+  - src: export.zip
+    dst: treestore.zip
+healthscript: tcp://challs.pwnoh.io:13420 <"657 chunks were added">
+image: treestore
+ports:
+  - type: tcp
+    container_port: 1024
+    instance_port: 40015
+    lb_port: 13420

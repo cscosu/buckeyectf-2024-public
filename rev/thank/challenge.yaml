@@ -1,0 +1,25 @@
+stable_id: thank
+name: thank
+description: |
+  I am so grateful for your precious files!
+
+  `nc challs.pwnoh.io 13373`
+flag: bctf{7h4nk_y0ur_10c41_c0mpu73r_70d4y}
+category: rev
+author: gsemaj
+difficulty: easy
+points: dynamic
+ticket_template: |
+  ## Please describe the issue (connection issues, wrong flag, etc.)
+healthscript: tcp://challs.pwnoh.io:13373 <"What">
+files:
+  - src: thank
+    dst: thank
+
+privileged: true
+image: thank
+ports:
+  - type: tcp
+    container_port: 5000
+    instance_port: 40003
+    lb_port: 13373

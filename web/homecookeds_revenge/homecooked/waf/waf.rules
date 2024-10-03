@@ -1,0 +1,5 @@
+PATH_TRAVERSAL=gm=/(\.\.)|(%2e%2e)|(%%32%65)|(%00)/
+XSS=gm=/(<.+>)|(script)|(&\w+;)|(\w+\s*=\s*[\w,]+\(.*\))/
+SQLI=gmi=/('|"|--|;).*(and|or|where|select|update|drop)/
+COMMAND_INJECTION=gm=/(\/(bin|bash|etc|usr|boot|dev|home|init|media|mnt|proc|root|snap|usr|var)\/)|(\s+(exec | curl | echo | cat)\s+)/
+SSTI=gmi=/(flag\.txt)|(popen)|(__mro__)|(__class__)|(eval)|(import)/

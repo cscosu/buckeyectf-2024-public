@@ -1,0 +1,26 @@
+stable_id: infrequentc
+name: infrequentc
+description: |
+  Struggling with the cryptography section? This C program can perform frequency analysis for you in the blink of an eye!
+
+  `nc challs.pwnoh.io 13374`
+
+flag: bctf{m4yb3_i_sh0uld_ju5t_stick_2_pyth0n}
+category: pwn
+author: corgo
+difficulty: hard
+points: dynamic
+ticket_template: |
+  ## Please describe the issue (connection issues, wrong flag, etc.)
+healthscript: tcp://challs.pwnoh.io:13374 <"Enter">
+files:
+  - src: export.zip
+    dst: infrequentc.zip
+
+privileged: true
+image: infrequentc
+ports:
+  - type: tcp
+    container_port: 1024
+    instance_port: 40300
+    lb_port: 13374

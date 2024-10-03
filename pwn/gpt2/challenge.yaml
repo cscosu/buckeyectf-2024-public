@@ -1,0 +1,37 @@
+stable_id: gpt2
+name: Gent's Favorite Model
+description: |
+  AI is nothing without you. Inspire me!!
+
+  Note: this challenge is very resource-intensive. Please solve locally, then submit a ticket.
+
+flag: &flag bctf{w0w_m4n_7h47_w45_r3411y_1nsp1r4710n4l}
+category: pwn
+author: kirin
+difficulty: medium
+points: dynamic
+ticket_template: |
+  ## Please paste your solve script or describe the issue (connection issues, wrong flag, etc.)
+healthscript: tcp://challs.pwnoh.io:13418 <"proof">
+files:
+  - src: gpt2.cpp
+    dst: gpt2.cpp
+  - src: Makefile
+    dst: Makefile
+  - src: Dockerfile
+    dst: Dockerfile
+
+privileged: true
+image: gpt2
+env:
+  JAIL_ENV_FLAG: *flag
+
+resources:
+  memory_limit_mb: 3000
+  cpu_limit_ms: 1700
+
+ports:
+  - type: tcp
+    container_port: 5000
+    instance_port: 40009
+    lb_port: 13418

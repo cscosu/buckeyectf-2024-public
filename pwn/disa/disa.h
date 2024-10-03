@@ -1,0 +1,7 @@
+#define MAX_LEN 16
+
+#define MIN_VAL_UNSIGNED 0
+#define MAX_VAL_UNSIGNED 8191
+
+#define MIN_VAL_SIGNED -4096
+#define MAX_VAL_SIGNED 4095

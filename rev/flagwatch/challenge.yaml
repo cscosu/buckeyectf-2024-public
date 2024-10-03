@@ -1,0 +1,14 @@
+stable_id: flagwatch
+name: flagwatch
+description: |
+  Did you know that you can [compile](https://github.com/AutoHotkey/Ahk2Exe) AutoHotKey scripts?
+flag: bctf{t3chnic4lly_a_keyl0gg3r}
+category: rev
+author: corgo
+difficulty: medium
+points: dynamic
+files:
+  - src: flagwatcher.exe
+    dst: flagwatch.exe
+ticket_template: |
+  # Please describe the issue you are having with the challenge, and the steps to reproduce

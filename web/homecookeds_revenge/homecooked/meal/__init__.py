@@ -1,0 +1,1 @@
+from homecooked.meal.meal import MealManager

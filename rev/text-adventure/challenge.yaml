@@ -1,0 +1,26 @@
+stable_id: textadventure
+name: text-adventure
+description: |
+  I just wrote a text adventure game after learning Java, but maybe I should've added some instructions....
+
+  `nc challs.pwnoh.io 13376`
+
+  <strong style="color: #22c55e">beginner</strong>
+flag: bctf{P33r_1nT0_tH3_j4r_2_f1nd_Th3_S3cR3Ts_d1463580a690f294}
+category: rev
+author: kanderoo
+difficulty: beginner
+points: 50
+ticket_template: |
+  ## Please describe the issue (connection issues, wrong flag, etc.)
+healthscript: tcp://challs.pwnoh.io:13376 <"You've">
+files:
+  - src: export.zip
+    dst: text-adventure.zip
+
+image: text-adventure
+ports:
+  - type: tcp
+    container_port: 5000
+    instance_port: 40017
+    lb_port: 13376

@@ -1,0 +1,18 @@
+stable_id: reduce_recycle
+name: reduce_recycle
+description: |
+  I forgot the randomly generated 12-character password I used to encrypt these files.... is there anything you can do to help me get my flag back??
+
+flag: bctf{wH1ch_d0g_w4s_youR_FaVOr1t3}
+category: forensics
+author: corgo
+difficulty: hard
+points: dynamic
+files:
+  - src: dogs_wearing_tools.zip
+    dst: dogs_wearing_tools.zip
+  - src: important_flags.7z
+    dst: important_flags.7z
+
+ticket_template: |
+  # Please describe the issue you are having with the challenge

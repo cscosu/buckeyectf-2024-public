@@ -1,0 +1,14 @@
+stable_id: duck-pics
+name: duck-pics
+description: |
+  got a capture on the chall author while engaging in "personal matters". see what you can find.
+flag: bctf{St0p_s3nd1Ng_m3_DuCK_p1c$}
+category: forensics
+author: rene
+points: dynamic
+difficulty: easy
+files:
+  - src: capture.pcapng
+    dst: capture.pcapng
+ticket_template: |
+  ## Please describe the issue (connection issues, wrong flag, etc.)

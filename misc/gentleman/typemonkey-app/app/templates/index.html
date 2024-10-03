@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>TypeMonkey - see monkey, type monkey</h1>
+    {% if current_user.is_anonymous %}
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="loginModalLabel">Login warning</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              You are not logged in. TypeMonkeys will not be scored.<br>
+              Create an account <a href="signup">here</a>, or login <a href="login">here</a>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    <script>
+    localStorage.setItem("isAnonymous", 1);
+    if (localStorage.getItem("loginWarningShown") != "seen") {
+        const m = document.getElementById('loginModal');
+        new bootstrap.Modal(m).show();
+        localStorage.setItem("loginWarningShown", "seen");
+    }
+    </script>
+    {% else %}
+    <script>
+    localStorage.setItem("isAnonymous", 0);
+    </script>
+    {% endif %}
+    <br><br><br>
+    <div class="text-center">
+        <img id="monkeyimage" src="https://www.placemonkeys.com/300?random" style="visibility:hidden">
+    <h3>
+        <span id="mKey" class="monKey">m</span>
+        <span id="oKey" class="monKey">o</span>
+        <span id="nKey" class="monKey">n</span>
+        <span id="kKey" class="monKey">k</span>
+        <span id="eKey" class="monKey">e</span>
+        <span id="yKey" class="monKey">y</span>
+        <br><br>
+        <span id="waiter" class="monKey">wait....</span>
+        <br>
+        <span id="scorefield"></span>
+    </h3>
+    <br>
+    <button id="startButton" type="button" class="btn btn-primary">Start</button>
+    </div>
+
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+{% endblock %}

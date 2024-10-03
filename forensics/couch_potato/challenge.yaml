@@ -1,0 +1,15 @@
+stable_id: couch_potato
+name: couch potato
+description: |
+  I am a real american, down to my favorite pastime!
+flag: bctf{1_11k3_5p4m_w17h_my_h4m}
+category: forensics
+author: auska
+difficulty: easy
+points: dynamic
+files:
+  - src: dump1.wav
+    dst: dump.wav
+
+ticket_template: |
+  # Please describe the issue you are having with the challenge

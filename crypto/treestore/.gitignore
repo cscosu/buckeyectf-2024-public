@@ -1,0 +1,6 @@
+.DS_Store
+__pycache__/
+treestore/
+all.bmp
+flag.bmp
+da_flag.bmp

@@ -1,0 +1,16 @@
+stable_id: unknown
+name: unknown
+description: |
+  Some may call this junk. Me, I call them treasures.
+
+  <strong style="color: #22c55e">beginner</strong>
+flag: bctf{f1l3_3x73n510n5_4r3_n07_r34l}
+category: forensics
+author: mbund
+points: 10
+difficulty: beginner
+files:
+  - src: unknown.zip
+    dst: unknown.zip
+ticket_template: |
+  ## Please describe the issue

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/style.css">
+    <title>Meal Grammar</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark p-3">
+        <a class="navbar-brand" href="#">Meal Grammar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home<span class="sr-only"></span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Chef</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./docs/homecooked">Homecooked Docs</a>
+                </li>
+                <li class="nav-item"></li>
+                    <a class="nav-link" href="./docs/meal">Meal Docs</a>
+                </li>
+                <li class="nav-item"></li>
+                    <a class="nav-link" href="/meal.lark">Meal Grammar</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <h3 class="mx-auto pt-5 w-50 text-center">
+        Meal Grammar Reference
+    </h3>
+    <pre class="py-5">
+    body: (statement | eval | html | meal_literal)*
+    statement.2: simple_statement | compound_statement
+    compound_statement: &quot;🍴&quot; (for_stmt | if_stmt | while_stmt) &quot;🍴&quot;
+    simple_statement: &quot;🍴&quot; (assign_stmt | expression) &quot;🍴&quot;
+    eval.1: &quot;🥢&quot; expression &quot;🥢&quot;
+    html.0: /[^🍴🥢🧆🥄]+/ body
+                    
+    for_stmt: &quot;🍔&quot; testlist &quot;🍟&quot; expression &quot;🥄&quot;  body &quot;🥄&quot;
+    if_stmt: &quot;🍕&quot; test &quot;🥄&quot; body &quot;🥄&quot; (&quot;🥙&quot; expression &quot;🥄&quot; body &quot;🥄&quot;)* (&quot;🥪&quot; &quot;🥄&quot; body &quot;🥄&quot;)?
+    while_stmt: &quot;🌯&quot; test &quot;🥄&quot; body &quot;🥄&quot;
+    assign_stmt: name &quot;🍇&quot; expression 
+
+    meal_literal.0: &quot;🧆&quot; /[^🧆]+/ &quot;🧆&quot;
+                    
+    expression: or_test
+    ?test: or_test (&quot;🍕&quot; or_test &quot;🥪&quot; test)?  
+    ?or_test: and_test (&quot;🍹&quot; and_test)*
+    ?and_test: not_test (&quot;🍸&quot; not_test)*
+    ?not_test: &quot;🍷&quot; not_test | comparison
+    ?comparison: arith_expr (COMP_OP arith_expr)*
+    COMP_OP: &quot;🍰&quot; | &quot;🧁&quot; | &quot;🥧&quot; | &quot;🍫&quot; | &quot;🍬&quot; | &quot;🍭&quot;
+    ?arith_expr: term (ARITH_OP term)*
+    ?term: factor (FACTOR_OP factor)*
+    ?factor: UNARY_OP factor | power
+    ?power: atom_expr (&quot;🍚&quot; factor)?
+                    
+    ?atom_expr: atom_expr &quot;🦀&quot; [arguments] &quot;🦞&quot; -&gt; funccall
+            | atom_expr &quot;🍎&quot; subscript_list &quot;🍏&quot; -&gt; getitem
+            | atom_expr &quot;🥚&quot; name -&gt; getattr
+            | atom
+                    
+    ?atom: &quot;🍎&quot; _exprlist? &quot;🍏&quot; -&gt; list
+        | &quot;🦀&quot; test &quot;🦞&quot;
+        | name -&gt; var
+        | number 
+        | string
+        | true 
+        | false 
+        | none
+                    
+    arguments: argvalue (&quot;🌭&quot; argvalue)*
+    ?argvalue: test kwargvalue?
+    kwargvalue: (&quot;🍇&quot; test)
+                    
+    ?subscript_list: subscript
+        | subscript ((&quot;🌭&quot; subscript)+ [&quot;🌭&quot;] | &quot;🌭&quot;)
+    ?subscript: test | ([test] &quot;🍆&quot; [test] [sliceop])
+    sliceop: &quot;🍆&quot; [test]
+                    
+    _exprlist: expression
+        | expression ((&quot;🌭&quot; expression)+ [&quot;🌭&quot;]|&quot;🌭&quot;)
+                    
+    ?testlist: test | testlist_tuple
+    testlist_tuple: test ((&quot;🌭&quot; test)+ [&quot;🌭&quot;] | &quot;🌭&quot;)
+
+    %import common.WS
+    %ignore WS
+
+    number: DEC_NUMBER | HEX_NUMBER | BIN_NUMBER | OCT_NUMBER | FLOAT_NUMBER | IMAG_NUMBER
+
+    ARITH_OP: &quot;🍦&quot; | &quot;🍧&quot;   
+    FACTOR_OP: &quot;🍨&quot; | &quot;🍩&quot; | &quot;🍪&quot; | &quot;🎂&quot;
+    UNARY_OP: &quot;🥟&quot; | &quot;🥠&quot; | &quot;🥡&quot;
+                
+    name: /[^\W\d]\w*/
+    COMMENT: /#[^\n]*/
+                
+    true: &quot;🌮&quot;
+    false: &quot;🥬&quot;
+    none: &quot;🥕&quot;
+
+
+    string: /([ubf]?r?|r[ubf])(&quot;(?!&quot;&quot;).*?(?&lt;!\\)(\\\\)*?&quot;|'(?!'').*?(?&lt;!\\)(\\\\)*?')/i
+
+    _SPECIAL_DEC: &quot;0&quot;..&quot;9&quot;        (&quot;_&quot;?  &quot;0&quot;..&quot;9&quot;                       )*
+    DEC_NUMBER:   &quot;1&quot;..&quot;9&quot;        (&quot;_&quot;?  &quot;0&quot;..&quot;9&quot;                       )*
+            |   &quot;0&quot;             (&quot;_&quot;?  &quot;0&quot;                            )* /(?![1-9])/
+    HEX_NUMBER.2: &quot;0&quot; (&quot;x&quot; | &quot;X&quot;) (&quot;_&quot;? (&quot;0&quot;..&quot;9&quot; | &quot;a&quot;..&quot;f&quot; | &quot;A&quot;..&quot;F&quot;))+
+    OCT_NUMBER.2: &quot;0&quot; (&quot;o&quot; | &quot;O&quot;) (&quot;_&quot;?  &quot;0&quot;..&quot;7&quot;                       )+
+    BIN_NUMBER.2: &quot;0&quot; (&quot;b&quot; | &quot;B&quot;) (&quot;_&quot;?  &quot;0&quot;..&quot;1&quot;                       )+
+
+    _EXP: (&quot;e&quot;|&quot;E&quot;) [&quot;+&quot; | &quot;-&quot;] _SPECIAL_DEC
+    DECIMAL: &quot;.&quot; _SPECIAL_DEC | _SPECIAL_DEC &quot;.&quot; _SPECIAL_DEC?
+    FLOAT_NUMBER.2: _SPECIAL_DEC _EXP | DECIMAL _EXP?
+    IMAG_NUMBER.2: (_SPECIAL_DEC      | FLOAT_NUMBER) (&quot;J&quot; | &quot;j&quot;)
+    </pre>
+</body>

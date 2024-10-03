@@ -1,0 +1,25 @@
+stable_id: instructions
+name: instructions
+description: |
+  Instructions unclear. Flag stuck in ceiling fan.
+
+  [instructions.challs.pwnoh.io](https://instructions.challs.pwnoh.io)
+flag: bctf{c0mp1l1n6_ru57_m4k35_my_4ud10_570p_w0rk1n6_2a14bdd6fa28e02d}
+category: web
+author: mbund
+difficulty: easy
+points: dynamic
+healthscript: https://instructions.challs.pwnoh.io
+ticket_template: |
+  ## Please describe the issue you are experiencing
+
+  ## Steps to reproduce
+
+files: []
+
+image: instructions
+ports:
+  - type: http
+    container_port: 80
+    instance_port: 40007
+    http_subdomain: instructions

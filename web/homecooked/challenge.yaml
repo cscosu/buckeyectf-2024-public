@@ -1,0 +1,28 @@
+stable_id: homecooked
+name: homecooked
+description: |
+  I've been working on my own ASGI-complaint Python web framework. It's still in the early stages, but I think it's coming along nicely. I've set up a demo site for you to try it out. Can you find the flag?
+
+  [homecooked.challs.pwnoh.io](https://homecooked.challs.pwnoh.io)
+flag: bctf{m4yb3_i_5h0uld_t3st_n3w_f34tur35}
+category: web
+author: v0rtex
+difficulty: hard
+points: dynamic
+healthscript: https://homecooked.challs.pwnoh.io
+ticket_template: |
+  ## Please describe the issue you are experiencing
+
+  ## Steps to reproduce
+
+files:
+  - src: export.zip
+    dst: homecooked.zip
+
+privileged: true
+image: homecooked
+ports:
+  - type: http
+    container_port: 8000
+    instance_port: 40005
+    http_subdomain: homecooked

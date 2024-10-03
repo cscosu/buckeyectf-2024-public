@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/style.css">
+    <title>🥢 title 🥢</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark p-3">
+        <a class="navbar-brand" href="#">Homecooked</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home<span class="sr-only"></span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/chef">Chef</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/docs/homecooked">Homecooked Docs</a>
+                </li>
+                <li class="nav-item"></li>
+                    <a class="nav-link" href="/docs/meal">Meal Docs</a>
+                </li>
+                <li class="nav-item"></li>
+                    <a class="nav-link" href="/meal.lark">Meal Grammar</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="container w-75 mx-auto p-2 my-5">
+            <h1> 🥢 title 🥢 </h1>
+            <p>
+                Meal is a templating language for the Homecooked ASGI framework. It is similar to Jinja2 and other templating languages, except
+                all terminals are replaced with emojis. 
+            </p>
+        </div>
+        <div class="container w-75 mx-auto p-2 my-5">
+            <h3>
+                How to get started with Meal and Chef?
+            </h3>
+            <p>
+                To get started with Meal and Chef, read the <a href="/docs/meal">Meal Docs</a> and try out the <a href="/chef">Chef Creator</a>.
+            </p>
+        </div>
+        <div class="container w-75 mx-auto p-2 my-5">
+            <h3>
+                Writing your first Meal Program
+            </h3>
+            <p>
+                In Meal, if it's not a variable, string or number, it's an emoji. Meal is a very powerful templating language, allowing for control
+                structures, loops, and more.
+            </p>
+            <p>
+                In the below program, we will do some basic math and print the result.
+            </p>
+            <pre class="bg-light p-2 my-5">
+🧆🍴 a 🍇 5 🍴 <br>
+🍴 b 🍇 10 🍴 <br>
+🥢 a 🍦 b 🥢🧆
+            </pre>
+            <p>
+                This program will output 15 to the screen. 
+            </p>
+            <ul>
+                <li>🧆🍴🧆 denotes the start of a statement (or block scope) and end of a statement (or block scope)</li>
+                <li>🧆🍇🧆 represents equality. So a = 5</li>
+                <li>🧆🍦🧆 is the addition operator. So a + b = 15, as b = 10</li>
+                <li>🧆🥢🧆 denotes an expression, which outputs text to the screen</li>
+            </ul>
+        </div>
+        <div class="container w-75 mx-auto p-2 my-5">
+            <h3> 
+                Control Flow in Meal
+            </h3>
+            <p>
+                Meal supports control flow structures such as if-else statements and loops.
+            </p>
+            <p>
+                In the below program, we will check if a is greater than b and print the result if it is. While it is not,
+                we will increase the value of a
+            </p>
+            <pre class="bg-light p-2 my-5">
+🧆🍴 a 🍇 5 🍴<br>
+🍴 b 🍇 10 🍴<br>
+🍴 🌯 a 🍰 b 🥄<br>
+    🍴 a 🍇 a 🍦 1 🍴<br>
+🥄🍴
+🥢 a  🥢
+🧆
+            </pre>
+            <p>
+                This program will output 10 to the screen, as a is incremented 5 times before it is equal to b.
+            </p>
+            <ul>
+                <li>🧆🍴🧆 denotes the start of a statement</li>
+                <li>🧆🥄🧆 denotes control flow scoping</li>
+                <li>🧆🍇🧆 represents equality. So a = 5</li>
+                <li>🧆🍰🧆 is the less than operator. So a &lt b</li>
+                <li>🧆🌯🧆 denotes a while statement. So while a &lt b, execute the loop</li>      
+            <p>
+                In the next program, we demonstrate a for loop. We will loop through a range of numbers and print the result.
+            </p>         
+            <pre class="bg-light p-2 my-5">
+🧆
+🍴 a🍇 🍎 1🌭2🌭5🌭21🌭123🍏🍴<br>
+🍴 🍔 num 🍟 a 🥄<br>
+    🍴 🍕 num 🥧 2 🥄<br>
+        num = 🥢 num  🥢<br>
+    🥄<br>
+    🥙 num 🥧 21 🥄<br>
+        num is now 21, see 🥢 num  🥢
+     🥄🍴
+🥄🍴
+🧆
+            </pre>
+            <p>
+                This program will iterate through the list [1, 2, 5, 21, 123]. When the value of 'num' is equal
+                to 2 and 21, the program will output to the screen.
+            </p>
+            <ul>
+                <li>🧆🦀🧆 is the start of an array</li>
+                <li>🧆🌭🧆 is the item delimter of an array</li>
+                <li>🧆🦞🧆 is the end of an array</li>
+                <li>🧆🍔🧆 is equivalent to 'for'</li>
+                <li>🧆🍟🧆 is equivalent to 'in' </li>
+                <li>🧆🍕🧆 is equivalent to 'if'</li>
+                <li>🧆🥙🧆 is equivalent to 'else if'</li>
+            </ul>
+            <p>
+                In more readable psuedocode, the program is equivalent to:
+            </p>
+            <pre class="bg-light p-2 my-5">
+a = [1,2,5,21,123] <br>
+<br>
+for num in a:<br>
+    if num == 2:<br>
+        print(num)<br>
+    else if num == 21:<br>
+        print(num)
+            </pre>
+        </div>
+        <div class="container w-75 mx-auto p-2 my-5">
+            <h3>
+                Meal context
+            </h3>
+            <p> As Meal is made to be used with web servers, and we often want to render dynamic information
+                from the webserver, Meal supports providing a 'render context' to the Meal template. When returning
+                a TemplateResponse, the context to provide to Meal is the second argument, and consists of a dict
+                mapping variable names to values.
+            </p>
+            <p>
+                In the below program, we will render a template with a context. Suppose we provide the following context:
+            </p>
+            <pre class="bg-light p-2 my-5">
+context = {'name': 'Meal Docs', 'author': 'Homecooked', 'value': 5}
+            </pre>
+            <p>
+                And the following template:
+            </p>
+            <pre class="bg-light p-2 my-5">
+🧆
+The name is: 🥢name🥢<br>
+The author is: 🥢author🥢<br>
+Value: 🥢max(value 🍧 10🌭2)🥢
+🧆
+            </pre>
+            <p>
+                🧆🥢name🥢🧆 will be replaced by 'Meal Docs', 🧆🥢author🥢🧆will be replaced by 'Homecooked', and the output for value will be the max of 'value - 10' and 2.
+            </p>
+        </div>
+        <div class="container w-75 mx-auto p-2 my-5">
+            <p>
+                That is all currently for the Meal Docs! To get a better undertsanding of Meal, try out the Chef Creator and take a look 
+                at the <a href="/meal.lark">official grammar</a> for Meal.
+            <p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,12 @@
+stable_id: sanity
+name: sanity
+description: |
+  Join the Discord by OAuth-ing in [/account](/account) and find the flag in the Discord.
+flag: bctf{rh0mbu5_d15c0rd_04u7h_15_c00l}
+category: misc
+author: mbund
+points: 10
+difficulty: beginner
+files: []
+ticket_template: |
+  ## Please describe the issue

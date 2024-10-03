@@ -1,0 +1,6 @@
+uvicorn
+lark
+markupsafe
+pydantic
+gunicorn
+uvicorn-worker

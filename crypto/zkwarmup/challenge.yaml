@@ -1,0 +1,23 @@
+stable_id: zkwarmup
+name: zkwarmup
+description: |
+  I just think zero-knowledge proofs are kinda neat
+
+  `nc challs.pwnoh.io 13421`
+flag: bctf{c4n_s0m30ne_g1v3_m3_a_r3a1_c01n_t0_fl1p}
+category: crypto
+author: can.of.porridge
+difficulty: easy
+points: dynamic
+ticket_template: |
+  ## Please describe the issue (connection issues, wrong flag, etc.)
+files:
+  - src: main.py
+    dst: zkwarmup.py
+healthscript: tcp://challs.pwnoh.io:13421 <"Welcome to zkwarmup!">
+image: zkwarmup
+ports:
+  - type: tcp
+    container_port: 1024
+    instance_port: 40024
+    lb_port: 13421

@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/style.css">
+    <title>🥢 title 🥢</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark p-3">
+        <a class="navbar-brand" href="#">Homecooked</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home<span class="sr-only"></span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/chef">Chef</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/docs/homecooked">Homecooked Docs</a>
+                </li>
+                <li class="nav-item"></li>
+                    <a class="nav-link" href="/docs/meal">Meal Docs</a>
+                </li>
+                <li class="nav-item"></li>
+                    <a class="nav-link" href="/meal.lark">Meal Grammar</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="container w-75 mx-auto p-2 my-5">
+            <h1> Homecooked </h1>
+            <p>
+                Homecooked is a ASGI-compliant web framework similar to Flask and FastAPI. It includes
+                support for dynamic routing of paths and middleware, and also features a static server.
+                Through PyDantic, Homecooked is able to deserialize JSON requests to Python objects and
+                via the Meal Template Engine, Homecooked supports it's own, very special, templating language.
+                It also has support for SubRouters, which is Homecooked's equivalent to Blueprints in Flask.
+            </p>
+        </div>
+        <div class="container w-75 mx-auto p-2 my-5">
+            <h3>
+                How to get started with Homecooked?
+            </h3>
+            <p>
+                To get started with Homecooked, read the <a href="./docs/homecooked">Homecooked Docs</a>. Then, clone
+                the Homecooked repo, place it in the base directory of your project, and fire away!
+            </p>
+        </div>
+        <div class="container w-75 mx-auto p-2 my-5">
+            <h3>
+                Writing your first Homecooked Program
+            </h3>
+            <p>
+                Below we will create our first Homecooked application. This application will be a simple "Hello, World!" application
+                that returns on the index route
+            </p>
+            <pre class="bg-light p-2 my-5">
+from homecooked import App, Response <br>
+<br>
+app = App()         <br>
+<br>
+@app.get("/")<br>
+async def index():<br>
+    return Response("Hello World!")
+            </pre> 
+            <p>
+                From the homecooked module, we import the App and Response classes. We then create an instance of the App class.
+                We then create a route that listens for GET requests on the index route. When a GET request is made to the index route,
+                the index function is called, which returns a Response object with the text "Hello, World!".
+            </p>
+        </div>
+        <div class="container w-75 mx-auto p-2 my-5">
+            <h3>Accessing the request object</h3>
+            <p>
+                We often want to be able to access information associated with the client's request. Via the request object, we can access
+                the client's IP address, the request method, the request headers, and more. The request object is passed as an argument to
+                the route function if the route has a parameter named 'request'. The fields of request come from the Request class in the
+                homecooked/request.py file.
+            </p>
+            <pre class="bg-light p-2 my-5">
+from homecooked import App, Response, Request<br>
+
+app = App()         <br>
+<br>
+@app.get("/")<br>
+async def index(request : Request):<br>
+    return Response(f"Hello {request.client_ip}!")       
+            </pre>
+            <p>
+                In the above example, we access the client's IP address via the request object. We then return a Response object with the text
+                "Hello {client's IP address}!". 
+            </p>
+        </div>
+        <div class="container w-75 mx-auto p-2 my-5">
+            <h3>Accessing query parameters</h3>
+            <p>
+                Query parameters are key-value pairs that are appended to the end of a URL. They are separated from the URL by a question mark
+                and are separated from each other by an ampersand. We can access query parameters via the query_params attribute of the request
+                object. The query_params attribute is a dictionary that maps query parameter keys to their values.
+            </p>
+            <pre class="bg-light p-2 my-5">
+from homecooked import App, Response, Request<br>
+
+app = App()         <br>
+<br>
+@app.get("/")<br>
+async def index(request : Request):<br>
+    name = request.query_params.get("name", "World")<br>
+    return Response(f"Hello {name}!")       
+            </pre>
+            <p>
+                In the above example, we access the query parameter "name" via the query_params attribute of the request object. If the "name"
+                query parameter is not present, we default to "World". We then return a Response object with the text "Hello {name}!".
+            </p>
+        </div>
+        <div class="container w-75 mx-auto p-2 my-5">
+            <h3>Path Parameters and Dynamic Paths</h3>
+            <p>
+                We may want to be able to dynamically create URLs for any reason, and then access the values of the dynamic parts of the URL.
+                Homecooked supports this via path parameters. Path parameters are parts of the URL that are enclosed in curly braces.
+            </p>
+            <pre class="bg-light p-2 my-5">
+@app.get("/{name:str}")<br>
+async def index(name : str):<br>
+    return Response(f"Hello {name}!")               
+            </pre>
+            <p>
+                In the above example, we create a route that listens for GET requests on the /{name} route, with the type of {name} being string.
+                When a GET request is made to the /{name} route, the index function is called, which returns a Response object with the text
+                "Hello {name}!". Dynamic paths currently support the types: 
+                <ul>
+                    <li>str</li>
+                    <li>int</li>
+                    <li>float</li>
+                    <li>uuidv4</li>
+                    <li>path</li>
+                </ul>
+                Additional converters can be made via adding a Converter to the ConverterEngine of homecooked. For instance, I can
+                create a custom converter like follows:
+                </p>
+                <pre class="bg-light p-2 my-5">
+from homecooked import Converter, ConverterEngine<br>
+<br>
+class HexConverter(Converter):<br>
+    regex = r"(0x[A-Fa-f0-9]+)"<br>
+<br>
+    def convert(self, value : str) -> int:<br>
+        return int(value, 16)<br>
+<br>
+ConverterEngine.add_converter('hex', HexConverter())
+                </pre>
+                <p>
+                    In the above example, we create a custom converter that converts hexadecimal strings to integers. We then add the custom
+                    converter to the ConverterEngine of Homecooked. We can then use the custom converter in our routes like so:
+                </p>
+                <pre class="bg-light p-2 my-5">
+@app.get("/{hval:hex}")<br>
+async def index(hval : int):<br>
+    print(f'look, the hex value has been converted to an int: {hval}')<br>
+    return Response(f"You sent: {hval}")<br>
+                </pre>
+                <p>
+                    It is required that all conveters have a regex attribute, used to match with a part of a path, and a convert method.
+                </p>
+        </div>
+        <div class="container w-75 mx-auto p-2 my-5">
+            <h3>Middleware</h3>
+            <p>
+                Middleware is a function that is called before or after a route is called. Middleware can be used to perform tasks such as
+                logging, authentication, and error handling. Middleware is added to the app via the app.middleware decorator. This decorator
+                accepts a path to match with, similar to a route. If the path is not provided, the middleware will be called for all routes.
+                Middleware accepts two arguments, being the request object and the next function. The next function is a coroutine that
+                calls the next middleware or route. Middleware can be used to modify the request object, the response object, or to short-circuit
+                the request and return a response.
+            </p>
+            <pre class="bg-light p-2 my-5">
+import time<br>
+from homecooked import App, Response<br>
+<br>
+app = App()         <br>
+@app.middleware()<br>
+async def middleware(request, next):<br>
+    start = time.time() <br>
+    response = await next(request)<br>
+    print(f"Time taken: {time.time() - start}")<br>
+    return response
+            </pre>
+            <p>
+                In the above example, we create a middleware that logs the time taken to process a request. We then call the next function
+                with the request object, which calls the next middleware or route. We then print the time taken to process the request and
+                return the response object.
+            </p>
+        </div>
+        <div class="container w-75 mx-auto p-2 my-5"> 
+            <h3> Template and JSON Responses </h3>
+            <p>
+                Homecooked supports returning TemplateResponse and JSONResponse objects. TemplateResponse objects are used to render templates
+                with a context, and JSONResponse objects are used to return JSON data. TemplateResponse objects are created by passing a template
+                and a context to the TemplateResponse constructor. JSONResponse objects are created by passing a dictionary to the JSONResponse
+                constructor.
+            </p>
+            <pre class="bg-light p-2 my-5">
+from homecooked import App, TemplateResponse, JSONResponse<br>
+<br>
+app = App()         <br>
+<br>
+@app.get("/")<br>
+async def index():<br>
+    return TemplateResponse("index.html", {"name": "Homecooked"})<br>
+<br>
+@app.get("/json")<br>
+async def json():<br>
+    data = {"name": "Homecooked"}<br>
+    return JSONResponse(data)
+            </pre>
+            <p>
+                In the above example, we create a route that listens for GET requests on the / route. When a GET request is made to the / route,
+                the index function is called, which returns a TemplateResponse object that renders the index.html template with the context
+                {"name": "Homecooked"}. We also create a route that listens for GET requests on the /json route. When a GET request is made to
+                the /json route, the json function is called, which returns a JSONResponse object with the data {"name": "Homecooked"}.
+            </p>
+        </div>
+        <div class="container w-75 mx-auto p-2 my-5">
+            <h3> Static Files </h3>
+            <p>
+                Homecooked supports serving static files such as images, CSS files, and JavaScript files. Static files are served from the
+                static directory in the base directory of the project. Static files are not stored in memory, unlike templates.
+            </p>
+        </div>
+        <div class="container w-75 mx-auto p-2 my-5">
+            <h3> Deserializing JSON into Parameters</h3>
+            <p>
+                Homecooked supports deserializing JSON data into parameters of route functions. This is done by adding a parameter to the route
+                function with the type of a Pydantic model. The Pydantic model is used to deserialize the JSON data into a Python object.
+            </p>
+            <pre class="bg-light p-2 my-5">
+from homecooked import App, Request, Response<br>
+from pydantic import BaseModel<br>
+<br>
+class Item(BaseModel):<br>
+    name: str<br>
+    price: float<br>
+<br>
+app = App()         <br>
+<br>
+@app.post("/")<br>
+async def create_item(request : Request, item : Item):<br>
+    return Response(f"Item {item.name} created with price {item.price}")
+            </pre>
+            <p>
+                In the above example, we create a Pydantic model called Item with the fields name and price. We then create a route that listens
+                for POST requests on the / route. When a POST request is made to the / route, the create_item function is called, which deserializes
+                the JSON data in the request body into an Item object. We then return a Response object with the text "Item {item.name} created with
+                price {item.price}".
+            </p>
+        </div>
+        <div class="container w-75 mx-auto p-2 my-5">
+            <h3> SubRouters </h3>
+            <p>
+                SubRouters are used to group routes together. A SubRouter instance can be created via creating a new instance of homecooked.SubRouter. 
+                SubRouters are binded by calling the app.add_subrouter function, providing the path to subroute first, and the SubRouter instance second. 
+                SubRouters can have their own middleware and routes.
+            </p>
+            <pre class="bg-light p-2 my-5">
+from homecooked import App, SubRouter, Response<br>
+
+subrouter = SubRouter()<br>
+<br>
+@subrouter.get("/")<br>
+async def admin_index():<br>
+    return Response("Admin Index")<br>
+<br>
+app = App()<br>
+app.add_subrouter("/admin", subrouter)
+            </pre>
+            <p>
+                In the above example, we create a SubRouter instance called subrouter. We then create a route that listens for GET requests on the / route.
+                When a GET request is made to the /admin route, the admin_index function is called, which returns a Response object with the text "Admin Index".
+            </p>
+        </div>
+        <div class="container w-75 mx-auto p-2 my-5">
+            <p> That's all for the Homecooked Docs! Start working on your own Homecooked-based application today!</p>
+        </div>
+    </div>
+</body>

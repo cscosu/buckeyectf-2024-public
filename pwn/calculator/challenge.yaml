@@ -1,0 +1,26 @@
+stable_id: calculator
+name: calculator
+description: |
+  <img style="height: 10rem" src="/static/math.webp" alt="math lady looking at numbers">
+  
+  `nc challs.pwnoh.io 13377`
+flag: bctf{cAn4r13S_L0v3_t0_34t_P13_c760f8cc0a44fed9}
+category: beginner-pwn
+author: kanderoo
+difficulty: beginner
+points: 80
+ticket_template: |
+  ## Please describe the issue (connection issues, wrong flag, etc.)
+healthscript: tcp://challs.pwnoh.io:13377 <"Welcome">
+
+files:
+  - src: calc
+    dst: calc
+
+privileged: true
+image: calculator
+ports:
+  - type: tcp
+    container_port: 5000
+    instance_port: 40018
+    lb_port: 13377

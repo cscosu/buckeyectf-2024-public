@@ -1,0 +1,18 @@
+body {
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    padding: 8px 32px;
+}
+
+pre {
+    line-height: 1;
+}
+
+.min-vw-50 {
+    min-width: 50%;
+  }

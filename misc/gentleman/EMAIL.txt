@@ -1,0 +1,26 @@
+From: "Janette Erickson" <janette.erickson@notarealperson.com>
+To: "'Stanley Stern'" <stanley.stern@notarealperson.com>
+Subject: Regarding our project's security
+Date: Mon, 2 Sep 2024 09:53:00 -0800
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+	boundary="----=_NextPart_000_006E_01C738AC.D7216990"
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_006E_01C738AC.D7216990
+Content-Type: text/plain;
+	charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+
+The pentester we hired has gotten back to us.
+They identified one vulnerability in their report, but noted
+that it would currently be impossible for an attacker to exploit.
+
+Given that we're already 3 days over our deadline, I say
+that we just release this as-is and worry about fixing the
+vulnerability at a later point in time.
+
+Janette 
+
+------=_NextPart_000_006E_01C738AC.D7216990--

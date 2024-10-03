@@ -1,0 +1,26 @@
+stable_id: gitgoo
+name: git goo
+description: |
+  Can you find your way around a git reposotory [sic]?
+
+  [gitgoo.challs.pwnoh.io](https://gitgoo.challs.pwnoh.io)
+flag: bctf{1_h4v3_c0mm17m3n7_i55u3s_cf39ab917a7dd092992a8f9b}
+category: misc
+author: jm8
+difficulty: easy
+points: dynamic
+healthscript: https://gitgoo.challs.pwnoh.io
+ticket_template: |
+  ## Please describe the issue you are experiencing
+
+  ## Steps to reproduce
+
+files: []
+
+image: gitgoo
+rate_limit: 20
+ports:
+  - type: http
+    container_port: 5000
+    instance_port: 40008
+    http_subdomain: gitgoo

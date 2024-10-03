@@ -1,0 +1,18 @@
+stable_id: datafrog
+name: datafrog
+description: |
+  A fact and a rule we might blend,
+  In Datalog, data's our friend.
+  Through join after join,
+  With little to coin,
+  We always reach truth in the end.
+flag: bctf{l0g1c_pr0gr4mm1ng_i5_c00l_i_guess_e8969966bEBIHCFDGAHCFDGAEBIDGAEBIHCFBADCIEGFHGFHBADCIECIEGFHBADIDBFECAHGAHGIDBFECFECAHGIDB5e70062e84212f1d863ac11386e48e46d160c0}
+category: rev
+author: ath0
+difficulty: medium
+points: dynamic
+files:
+  - src: export.zip
+    dst: datafrog.zip
+ticket_template: |
+  # Please describe the issue you are having with the challenge

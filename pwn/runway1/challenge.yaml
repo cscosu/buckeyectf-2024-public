@@ -1,0 +1,26 @@
+stable_id: runway1
+name: runway1
+description: |
+  Starting to ramp up!
+
+  `nc challs.pwnoh.io 13401`
+  <br><strong style="color: #22c55e">beginner</strong>
+flag: bctf{I_34t_fl4GS_4_bR34kf4st_7c639e33ffcfe8c2}
+category: beginner-pwn
+author: kanderoo
+difficulty: beginner
+points: 60
+ticket_template: |
+  ## Please describe the issue (connection issues, wrong flag, etc.)
+healthscript: tcp://challs.pwnoh.io:13401 <"What">
+files:
+  - src: export.zip
+    dst: runway1.zip
+
+privileged: true
+image: runway1
+ports:
+  - type: tcp
+    container_port: 5000
+    instance_port: 40021
+    lb_port: 13401
